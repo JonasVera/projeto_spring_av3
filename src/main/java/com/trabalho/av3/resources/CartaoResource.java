@@ -1,5 +1,4 @@
 package com.trabalho.av3.resources;
- 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,22 +6,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.trabalho.av3.domain.Categoria;
-import com.trabalho.av3.services.CategoriaService;
 
+import com.trabalho.av3.domain.Cartao;
+ 
+import com.trabalho.av3.services.CartaoService;
+ 
 @RestController
-@RequestMapping(value = "/categoria")
-public class CategoriaResource {
+@RequestMapping(value = "/cartao")
+public class CartaoResource {
 
 	@Autowired
-	private CategoriaService  service;
+	private CartaoService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Categoria> find(@PathVariable Integer id) {
+	public  ResponseEntity<Cartao> find(@PathVariable Integer id) {
 		 
-		 Categoria obj = service.find(id);
+		 Cartao obj = service.find(id);
 		 
 	     return ResponseEntity.ok().body(obj);
 	}
-	
 }
