@@ -19,7 +19,7 @@ public class CategoriaService {
 		 
 		java.util.Optional<Categoria> obj = repository.findById(id);
 		
-		return null;
+		return obj.orElse(null);
 	}
 
 	
