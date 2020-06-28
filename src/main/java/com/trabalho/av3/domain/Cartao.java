@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
  
 
 @Entity
@@ -26,11 +28,12 @@ public class Cartao implements Serializable {
 	private String nomeCliente;
 	private Integer cod;
 	private String senha;
- 
+	
+	 
 	@OneToMany(mappedBy = "cartao")
 	private List<Fatura> faturas = new ArrayList<>();
 	 
-
+	 
 	@ManyToOne
 	@JoinColumn(name = "conta_id")
 	private Conta conta;

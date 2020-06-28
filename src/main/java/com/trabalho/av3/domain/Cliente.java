@@ -9,9 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
  
 @Entity
 public class Cliente implements Serializable{
@@ -29,9 +30,9 @@ public class Cliente implements Serializable{
  	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
  	
+ 	 
  	@OneToOne
  	@JoinColumn(name = "conta_id")
- 	@MapsId
  	private Conta conta;
  	  
  	public Conta getConta() {

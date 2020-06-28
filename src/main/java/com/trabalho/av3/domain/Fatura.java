@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Fatura implements Serializable{
@@ -23,6 +25,7 @@ public class Fatura implements Serializable{
 	private Boolean estado;
 	private Double total;
 	
+	 
 	@ManyToOne
 	@JoinColumn(name = "cartao_id")
 	private Cartao cartao;

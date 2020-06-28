@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Conta implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -23,9 +25,11 @@ public class Conta implements Serializable{
 	private Double saldo;
 	private Boolean estado;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "conta")
 	private List<Cartao> cartoes = new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;

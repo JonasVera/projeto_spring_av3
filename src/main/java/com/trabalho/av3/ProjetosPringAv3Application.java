@@ -1,7 +1,6 @@
 package com.trabalho.av3;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -57,8 +56,7 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
    	Categoria cat2 = new Categoria(null,"Bronze");
    	Categoria cat3 = new Categoria(null,"Gold");
    
-   	categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
-    
+   	
    	Conta cnt1 = new Conta(null,458212,new Double (2500),true,cat1);
    	Conta cnt2 = new Conta(null,589636,new Double (10000),true,cat2);
    	Conta cnt3 = new Conta(null,553287,new Double (800000),true,cat3);
@@ -66,6 +64,7 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
    	cat1.getCategorias().addAll(Arrays.asList(cnt1));
    	cat2.getCategorias().addAll(Arrays.asList(cnt2));
    	cat3.getCategorias().addAll(Arrays.asList(cnt3));
+   	categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
     
    	cli1.setConta(cnt1);
    	cli2.setConta(cnt2);
@@ -74,7 +73,12 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
    	cli1.getEnderecos().addAll(Arrays.asList(end1));
    	cli2.getEnderecos().addAll(Arrays.asList(end2));
    	cli3.getEnderecos().addAll(Arrays.asList(end3));
-   
+   	
+   	contaRepository.saveAll(Arrays.asList(cnt1,cnt2,cnt3));
+   	
+   	clienteRepository.saveAll(Arrays.asList(cli1,cli2,cli3));
+	enderecoRepository.saveAll(Arrays.asList(end1,end2,end3));
+
    	// DADOS DO CARTAO E FATURA
    	SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
 	Date dtVenc = dt.parse("20/02/2022");
@@ -87,7 +91,11 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
  	cnt2.getCartoes().addAll(Arrays.asList(card2));
  	cnt3.getCartoes().addAll(Arrays.asList(card3));
  	
- 	//Date dataVencimento,Date dataPagamento,Boolean estado,Double juros,Double total,Cartao cartao
+ 	
+ 	
+ 	cartaoRepository.saveAll(Arrays.asList(card1,card2,card3));
+ 	
+
  	Fatura fat1C1 = new Fatura(dt.parse("15/06/2020"),dt.parse("10/06/2020"),true,new Double(0),new Double(260),card1);
  	Fatura fat2C1 = new Fatura(dt.parse("30/07/2020"),dt.parse("20/07/2020"),true,new Double(0),new Double(1800),card1);
  	Fatura fat3C1 = new Fatura(dt.parse("15/05/2020"),null,true,new Double(0.5),new Double(100),card1);
@@ -103,21 +111,9 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
  	card1.getFaturas().addAll(Arrays.asList(fat1C1,fat2C1,fat3C1));
  	card2.getFaturas().addAll(Arrays.asList(fat1C2,fat2C2,fat3C3));
  	card3.getFaturas().addAll(Arrays.asList(fat1C3,fat2C3,fat3C3));
- 	
- 	
-	clienteRepository.saveAll(Arrays.asList(cli1,cli2,cli3));
-	enderecoRepository.saveAll(Arrays.asList(end1,end2,end3));
-    
- 	contaRepository.saveAll(Arrays.asList(cnt1,cnt2,cnt3));
- 	
- 	cartaoRepository.saveAll(Arrays.asList(card1,card2,card3));
- 
- 	
+ 	 
  	faturaRepository.saveAll(Arrays.asList(fat1C1,fat2C1,fat3C1,fat1C2,fat2C2,fat3C2,fat1C3,fat2C3,fat3C3));
  	
-
- 	
- 	
- 	
+ 
   }
 }
