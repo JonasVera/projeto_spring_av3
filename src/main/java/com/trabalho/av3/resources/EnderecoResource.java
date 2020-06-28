@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trabalho.av3.domain.Endereco;
 import com.trabalho.av3.services.EnderecoService;
+
+import javassist.tools.rmi.ObjectNotFoundException;
  
 
 @RestController
@@ -19,7 +21,7 @@ public class EnderecoResource {
 	private EnderecoService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Endereco> find(@PathVariable Integer id) {
+	public  ResponseEntity<Endereco> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		 
 		 Endereco obj = service.find(id);
 		 

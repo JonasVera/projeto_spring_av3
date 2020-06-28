@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trabalho.av3.domain.Cliente;
 import com.trabalho.av3.services.ClienteService;
+
+import javassist.tools.rmi.ObjectNotFoundException;
  
  
 
@@ -20,7 +22,7 @@ public class ClienteResource {
 	private ClienteService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Cliente> find(@PathVariable Integer id) {
+	public  ResponseEntity<Cliente> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		 
 		 Cliente obj = service.find(id);
 	     return ResponseEntity.ok().body(obj);

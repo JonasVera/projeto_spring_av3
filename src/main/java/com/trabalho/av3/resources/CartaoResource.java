@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trabalho.av3.domain.Cartao;
 import com.trabalho.av3.services.CartaoService;
+
+import javassist.tools.rmi.ObjectNotFoundException;
  
  
 @RestController
@@ -19,7 +21,7 @@ public class CartaoResource {
 	private CartaoService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Cartao> find(@PathVariable Integer id) {
+	public  ResponseEntity<Cartao> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		 
 		 Cartao obj = service.find(id);
 		 

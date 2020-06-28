@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
  
 import com.trabalho.av3.domain.Conta;
 import com.trabalho.av3.services.ContaService;
+
+import javassist.tools.rmi.ObjectNotFoundException;
  
  
 @RestController
@@ -19,7 +21,7 @@ public class ContaResource {
 	private ContaService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Conta> find(@PathVariable Integer id) {
+	public  ResponseEntity<Conta> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		 
 		Conta obj = service.find(id);
 		 

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.trabalho.av3.domain.Fatura; 
 import com.trabalho.av3.services.FaturaService;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 @RestController
 @RequestMapping(value = "/fatura")
 public class FaturaResource {
@@ -17,7 +19,7 @@ public class FaturaResource {
 	private FaturaService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Fatura> find(@PathVariable Integer id) {
+	public  ResponseEntity<Fatura> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		 
 		 Fatura obj = service.find(id);
 		 
