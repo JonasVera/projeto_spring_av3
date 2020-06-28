@@ -22,7 +22,7 @@ public class Categoria implements Serializable{
   
   
   @OneToMany(mappedBy = "categoria")
-  private List<Categoria> categoria = new ArrayList<>();
+  private List<Conta> contas = new ArrayList<>();
 	
 	
   public Categoria() {
@@ -35,7 +35,16 @@ public class Categoria implements Serializable{
 	 this.nome = nome;
   }
 
- public Integer getId() {
+ 
+ public List<Conta> getCategorias() {
+	return contas;
+}
+
+public void setCategorias(List<Conta> contas) {
+	this.contas = contas;
+}
+
+public Integer getId() {
 	return id;
  }
  

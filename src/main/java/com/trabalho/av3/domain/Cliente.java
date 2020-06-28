@@ -22,7 +22,6 @@ public class Cliente implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
  	private String nome;
- 	
  	private String telefone;
  	private String email;
  
@@ -34,8 +33,16 @@ public class Cliente implements Serializable{
  	@JoinColumn(name = "conta_id")
  	@MapsId
  	private Conta conta;
- 	
- 	public Cliente () {
+ 	  
+ 	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
+	public Cliente () {
  			
  	}
 
@@ -52,7 +59,7 @@ public class Cliente implements Serializable{
  		this.email = email;
  		this.nome = nome;
  		this.telefone = telefone;
- 		
+ 		  
  	}
 
  	public Integer getId() {

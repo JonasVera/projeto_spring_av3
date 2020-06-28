@@ -34,7 +34,7 @@ public class Cartao implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "conta_id")
 	private Conta conta;
-	
+	 
 	public List<Fatura> getFaturas() {
 		return faturas;
 	}
