@@ -2,11 +2,13 @@ package com.trabalho.av3.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Fatura implements Serializable{
@@ -19,10 +21,39 @@ public class Fatura implements Serializable{
 	private Date dataPagamento;
 	private Double juros;
 	private boolean estado;
-	private double total;
+	private Double total;
 	
+	@ManyToOne
+	@JoinColumn(name = "cartao_id")
+	private Cartao cartao;
+
+ 
+	public Cartao getCartao() {
+		return cartao;
+	}
+
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public Fatura (){
+		
+	}
 	
-	
+	public Fatura (Date dataVencimento,Date dataPagamento,Double juros,Double total,Cartao cartao){
+		super();
+		this.dataVencimento = dataVencimento;
+		this.dataPagamento = dataPagamento;
+		this.juros = juros;
+		this.total = total;
+		this.cartao = cartao;
+		 
+	}
+	 
 	public Integer getId() {
 		return id;
 	}
@@ -82,6 +113,6 @@ public class Fatura implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+	 
+ 
 }

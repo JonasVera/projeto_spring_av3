@@ -6,24 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.trabalho.av3.domain.Fatura; 
+import com.trabalho.av3.services.FaturaService;
 
-import com.trabalho.av3.domain.Cartao;
-import com.trabalho.av3.services.CartaoService;
- 
- 
 @RestController
-@RequestMapping(value = "/cartao")
-public class CartaoResource {
+@RequestMapping(value = "/fatura")
+public class FaturaResource {
 
 	@Autowired
-	private CartaoService  service;
+	private FaturaService  service;
 	
 	@GetMapping(value = "/{id}")
-	public  ResponseEntity<Cartao> find(@PathVariable Integer id) {
+	public  ResponseEntity<Fatura> find(@PathVariable Integer id) {
 		 
-		 Cartao obj = service.find(id);
+		 Fatura obj = service.find(id);
 		 
 	     return ResponseEntity.ok().body(obj);
 	}
-	
 }

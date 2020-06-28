@@ -1,12 +1,15 @@
 package com.trabalho.av3.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+ 
 
 @Entity
 public class Cartao implements Serializable {
@@ -21,6 +24,33 @@ public class Cartao implements Serializable {
 	private String nomeCliente;
 	private Integer cod;
 	private String senha;
+ 
+	@OneToMany(mappedBy = "cartao")
+	private List<Fatura> faturas = new ArrayList<>();
+	 
+	public List<Fatura> getFaturas() {
+		return faturas;
+	}
+
+	public void setFaturas(List<Fatura> faturas) {
+		this.faturas = faturas;
+	}
+
+	public Cartao () {
+		
+	}
+	 
+	public Cartao (Integer id, Integer numero, 
+			Date vencimento, String nomeCliente,  Integer cod,  String senha
+	    ) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.vencimento = vencimento;
+		this.nomeCliente = nomeCliente;
+		this.cod = cod;
+		this.senha = senha;
+	}
 	public Integer getId() {
 		return id;
 	}
