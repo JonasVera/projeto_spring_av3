@@ -1,8 +1,6 @@
 package com.trabalho.av3.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+ 
 
 @Entity
 public class Conta implements Serializable{
@@ -24,37 +22,50 @@ public class Conta implements Serializable{
 	private Integer numero;
 	private Double saldo;
 	private Boolean estado;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "conta")
-	private List<Cartao> cartoes = new ArrayList<>();
-	
-	@JsonIgnore
+	 	
 	@ManyToOne
-	@JoinColumn(name = "categoria_id")
+	@JoinColumn(name = "cartao_id")
+	private Cartao cartao;
+  
+
+	@ManyToOne
+	@JoinColumn(name = "categoria_id") 
 	private Categoria categoria;
-	 
+ 
+ 	@OneToOne
+ 	@JoinColumn(name = "cliente_id")
+ 	private Cliente cliente;
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public Conta () {
 		
 	}
 	
-	public Conta (Integer id, Integer numero, Double saldo, Boolean estado,Categoria categoria) {
+	public Conta (Integer id, Integer numero, Double saldo, Boolean estado,Categoria categoria,Cartao card) {
 		
 		this.id = id;
 		this.numero = numero;
 		this.saldo = saldo;
 		this.estado = estado;
 		this.categoria =  categoria;
+		this.cartao = card;
 		 
 	}
 	
-	
-	public List<Cartao> getCartoes() {
-		return cartoes;
+	 
+	public Cartao getCartao() {
+		return cartao;
 	}
 
-	public void setCartoes(List<Cartao> cartoes) {
-		this.cartoes = cartoes;
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
 	}
 
 	public Categoria getCategoria() {

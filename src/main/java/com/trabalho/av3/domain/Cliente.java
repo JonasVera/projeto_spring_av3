@@ -8,11 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+ 
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+ 
  
 @Entity
 public class Cliente implements Serializable{
@@ -26,23 +24,10 @@ public class Cliente implements Serializable{
  	private String telefone;
  	private String email;
  
- 	 
+  
  	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
- 	
- 	 
- 	@OneToOne
- 	@JoinColumn(name = "conta_id")
- 	private Conta conta;
- 	  
- 	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-
+ 	    
 	public Cliente () {
  			
  	}
@@ -60,7 +45,7 @@ public class Cliente implements Serializable{
  		this.email = email;
  		this.nome = nome;
  		this.telefone = telefone;
- 		  
+  
  	}
 
  	public Integer getId() {

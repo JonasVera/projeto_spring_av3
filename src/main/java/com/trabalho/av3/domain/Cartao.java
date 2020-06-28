@@ -11,10 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
- 
-
+  
 @Entity
 public class Cartao implements Serializable {
  
@@ -29,15 +28,18 @@ public class Cartao implements Serializable {
 	private Integer cod;
 	private String senha;
 	
-	 
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "cartao")
 	private List<Fatura> faturas = new ArrayList<>();
-	 
-	 
-	@ManyToOne
-	@JoinColumn(name = "conta_id")
-	private Conta conta;
-	 
+	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "cartao")
+	private List<Conta> contas = new ArrayList<>();
+	
+ 
+  
 	public List<Fatura> getFaturas() {
 		return faturas;
 	}
@@ -50,8 +52,16 @@ public class Cartao implements Serializable {
 		
 	}
 	 
+	public List<Conta> getContas() {
+		return contas;
+	}
+
+	public void setContas(List<Conta> contas) {
+		this.contas = contas;
+	}
+
 	public Cartao (Integer id, Integer numero, 
-			Date vencimento, String nomeCliente,  Integer cod,  String senha,Conta conta
+			Date vencimento, String nomeCliente,  Integer cod,  String senha
 	    ) {
 		super();
 		this.id = id;
@@ -60,16 +70,9 @@ public class Cartao implements Serializable {
 		this.nomeCliente = nomeCliente;
 		this.cod = cod;
 		this.senha = senha;
-		this.conta = conta;
+		 
 	}
-	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-
+	 
 	public Integer getId() {
 		return id;
 	}
