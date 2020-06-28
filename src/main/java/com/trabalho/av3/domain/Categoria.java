@@ -1,11 +1,14 @@
 package com.trabalho.av3.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria implements Serializable{
@@ -17,6 +20,11 @@ public class Categoria implements Serializable{
   
   private String nome;
   
+  
+  @OneToMany(mappedBy = "categoria")
+  private List<Categoria> categoria = new ArrayList<>();
+	
+	
   public Categoria() {
 	  
   }

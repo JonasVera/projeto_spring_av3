@@ -52,30 +52,30 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
 		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
 		Date dtVenc = dt.parse("20/02/2022");
 		
-		Cartao card1 = new Cartao(null,23343322,dtVenc,"JONAS SILVA VERA",874,"20718");
-		Cartao card2 = new Cartao(null,23343322,dt.parse("30/02/2023"),"JOSE DA SILVA",684,"0000");
-		Cartao card3 = new Cartao(null,23343322,dt.parse("30/02/2023"),"MARCOS SILVA",124,"0202");	
+		///Cartao card1 = new Cartao(null,23343322,dtVenc,"JONAS SILVA VERA",874,"20718");
+		//Cartao card2 = new Cartao(null,23343322,dt.parse("30/02/2023"),"JOSE DA SILVA",684,"0000");
+	//	// card3 = new Cartao(null,23343322,dt.parse("30/02/2023"),"MARCOS SILVA",124,"0202");	
 		 
 		
 		// CRIAÇÃO DAS FATURAS 
 		Fatura fat1 = new Fatura();
-		fat1.setCartao(card1);
+	//	fat1.setCartao(card1);
 		fat1.setDataVencimento(dt.parse("30/06/2020"));
 		fat1.setEstado(true);
 		fat1.setDataVencimento(dt.parse("31/06/2020"));
 		fat1.setJuros(new Double(0));
 		
 		Fatura fat2 = new Fatura();
-		fat1.setCartao(card1);
+		//.setCartao(card1);
 		fat1.setDataVencimento(null);
 		fat1.setEstado(false);
 		fat1.setDataVencimento(dt.parse("05/07/2020"));
 		fat1.setJuros(new Double(0));
 		
-		card1.getFaturas().addAll(Arrays.asList(fat1));
-		
-		cartaoRepository.saveAll(Arrays.asList(card1,card2,card3));
-		faturaRepository.saveAll(Arrays.asList(fat1));
+	//	card1.getFaturas().addAll(Arrays.asList(fat1));
+
+		//cartaoRepository.saveAll(Arrays.asList(card1,card2,card3));
+		//faturaRepository.saveAll(Arrays.asList(fat1));
 		
 		//CRIACAO DO CLIENTE 
   
@@ -93,9 +93,9 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
 	    cli2.getEnderecos().addAll(Arrays.asList(end2));
 	    cli3.getEnderecos().addAll(Arrays.asList(end3));
 	    
-	    clienteRepository.saveAll( Arrays.asList(cli1,cli2,cli3));
+	    //clienteRepository.saveAll( Arrays.asList(cli1,cli2,cli3));
 		
-	    enderecoRepository.saveAll( Arrays.asList(end1,end2,end3));
+	    //enderecoRepository.saveAll( Arrays.asList(end1,end2,end3));
 		
 	    
 	}

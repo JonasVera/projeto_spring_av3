@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
  
 
@@ -28,6 +30,11 @@ public class Cartao implements Serializable {
 	@OneToMany(mappedBy = "cartao")
 	private List<Fatura> faturas = new ArrayList<>();
 	 
+
+	@ManyToOne
+	@JoinColumn(name = "conta_id")
+	private Conta conta;
+	
 	public List<Fatura> getFaturas() {
 		return faturas;
 	}
@@ -41,7 +48,7 @@ public class Cartao implements Serializable {
 	}
 	 
 	public Cartao (Integer id, Integer numero, 
-			Date vencimento, String nomeCliente,  Integer cod,  String senha
+			Date vencimento, String nomeCliente,  Integer cod,  String senha,Conta conta
 	    ) {
 		super();
 		this.id = id;
@@ -50,7 +57,16 @@ public class Cartao implements Serializable {
 		this.nomeCliente = nomeCliente;
 		this.cod = cod;
 		this.senha = senha;
+		this.conta = conta;
 	}
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
 	public Integer getId() {
 		return id;
 	}
