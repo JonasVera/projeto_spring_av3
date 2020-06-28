@@ -20,34 +20,23 @@ public class Fatura implements Serializable{
 	private Date dataVencimento;
 	private Date dataPagamento;
 	private Double juros;
-	private boolean estado;
+	private Boolean estado;
 	private Double total;
 	
 	@ManyToOne
 	@JoinColumn(name = "cartao_id")
 	private Cartao cartao;
 
- 
-	public Cartao getCartao() {
-		return cartao;
-	}
-
-	public void setCartao(Cartao cartao) {
-		this.cartao = cartao;
-	}
-
-	public void setTotal(Double total) {
-		this.total = total;
-	}
-
 	public Fatura (){
 		
 	}
 	
-	public Fatura (Date dataVencimento,Date dataPagamento,Double juros,Double total,Cartao cartao){
+	public Fatura (Date dataVencimento,Date dataPagamento,Boolean estado,Double juros,Double total,Cartao cartao){
 		super();
+
 		this.dataVencimento = dataVencimento;
 		this.dataPagamento = dataPagamento;
+		this.estado = estado;
 		this.juros = juros;
 		this.total = total;
 		this.cartao = cartao;
@@ -81,14 +70,21 @@ public class Fatura implements Serializable{
 	public boolean isEstado() {
 		return estado;
 	}
-	public void setEstado(boolean estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 	public double getTotal() {
 		return total;
 	}
-	public void setTotal(double total) {
+	public void setTotal(Double total) {
 		this.total = total;
+	}
+	public Cartao getCartao() {
+		return cartao;
+	}
+
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
 	}
 	@Override
 	public int hashCode() {

@@ -8,6 +8,7 @@ import com.trabalho.av3.repositories.FaturaRepository;
 
 @Service
 public class FaturaService {
+	
 	@Autowired
 	private FaturaRepository repository; 
 	

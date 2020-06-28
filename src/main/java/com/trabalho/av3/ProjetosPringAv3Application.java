@@ -49,21 +49,29 @@ public class ProjetosPringAv3Application implements CommandLineRunner{
 		Cartao card1 = new Cartao(null,23343322,dtVenc,"JONAS SILVA VERA",874,"20718");
 		Cartao card2 = new Cartao(null,23343322,dt.parse("30/02/2023"),"JOSE DA SILVA",684,"0000");
 		Cartao card3 = new Cartao(null,23343322,dt.parse("30/02/2023"),"MARCOS SILVA",124,"0202");	
-		
 		 
- 
-		 Double x = new Double(0);
-		  
-		 Fatura fat1 = new Fatura(dt.parse("30/06/2020"),dt.parse("30/06/2020"),x = new Double(0),x = new Double(800),card1);
-		 Fatura fat2 = new Fatura(dt.parse("30/06/2020"),dt.parse("30/06/2020"),x = new Double(0),x = new Double(900),card1);
+		 
+		Fatura fat1 = new Fatura();
+		fat1.setCartao(card1);
+		fat1.setDataVencimento(dt.parse("30/06/2020"));
+		fat1.setEstado(true);
+		fat1.setDataVencimento(dt.parse("31/06/2020"));
+		fat1.setJuros(new Double(0));
+		
+		Fatura fat2 = new Fatura();
+		fat1.setCartao(card1);
+		fat1.setDataVencimento(null);
+		fat1.setEstado(false);
+		fat1.setDataVencimento(dt.parse("05/07/2020"));
+		fat1.setJuros(new Double(0));
+		
 
 	 
-		  card1.getFaturas().add(fat2);
+		card1.getFaturas().add(fat2);
 		 
 		  
-		  cartaoRepository.saveAll(Arrays.asList(card1,card2,card3));
-		   
-		  faturaRepository.saveAll(Arrays.asList(fat1));
+		cartaoRepository.saveAll(Arrays.asList(card1,card2,card3));
+		faturaRepository.saveAll(Arrays.asList(fat1));
 		  
 		 
 	}
